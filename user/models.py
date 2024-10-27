@@ -18,15 +18,13 @@ class ServedCities(models.TextChoices):
     PALHOCA = 'PA', 'Palhoça'
 
 
-class Client(models.base):
-    id = models.Index()
-    public_id = models.UUIDField()
+class Client(models.Model):
+    id = models.IntegerField(primary_key=True, auto_created=True)
+    public_id = models.UUIDField(auto_created=True)
     name = models.CharField(max_length=256)
-    email = models.EmailField()
-    phone_number = models.CharField(validators=phone_regex)
+    email = models.EmailField(max_length=256)
+    phone_number = models.CharField(validators=[phone_regex], max_length=15)
 
     address = models.CharField(max_length=512)
-    cep = models.CharField(validators=cep_regex)
-    city = models.TextChoices(ServedCities)
-
-    salty
+    cep = models.CharField(validators=[cep_regex],  max_length=16)
+    city = models.CharField(max_length=2, choices=ServedCities.choices, default=ServedCities.FLORIANOPOLIS)
