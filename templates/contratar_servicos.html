@@ -1,0 +1,22 @@
+<!-- user/templates/contratar_servicos.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="contratar-container">
+    <h2>Contratar Serviços</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Selecione os serviços que deseja contratar:</label><br>
+            {% for servico in servicos %}
+                <label>
+                    <input type="checkbox" name="servicos" value="{{ servico }}">
+                    {{ servico }}
+                </label><br>
+            {% endfor %}
+        </div>
+        <button type="submit" class="contratar-button">Finalizar Contratação</button>
+    </form>
+</div>
+{% endblock %}

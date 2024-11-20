@@ -1,0 +1,34 @@
+<!-- user/templates/cadastro.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="back-button">
+    <button type="button" class="cadastro-button" onclick="window.location.href='{% url 'calendario' %}'">Voltar</button>
+</div>
+
+<div class="cadastro-container">
+    <h2>Cadastro</h2>
+
+    <!-- Exibe a data selecionada -->
+
+    <form method="POST" class="cadastro-form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.nome.id_for_label }}">Nome</label>
+            {{ form.nome }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Email</label>
+            {{ form.email }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.whatsapp.id_for_label }}">WhatsApp</label>
+            {{ form.whatsapp }}
+        </div>
+        <button type="submit" class="cadastro-button">Contratar para o dia {{ data_selecionada }}</button>
+    </form>
+</div>
+
+{% endblock %}

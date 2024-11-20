@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Agende seu Horário</h1>
+    <div id="calendar"></div>
+</div>
+{% endblock %}
+
+{% block extra_styles %}
+<!-- CSS do FullCalendar -->
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css" rel="stylesheet" />
+{% endblock %}
+
+{% block scripts %}
+<!-- JS do FullCalendar -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarioEl = document.getElementById('calendar');
+
+        // Inicializa o FullCalendar
+        var calendar = new FullCalendar.Calendar(calendarioEl, {
+            initialView: 'dayGridMonth',
+            dateClick: function(info) {
+                alert('Data clicada: ' + info.dateStr);
+                // Redireciona para a página de cadastro com a data selecionada
+                window.location.href = "{% url 'cadastro' %}?data=" + info.dateStr;
+            }
+        });
+
+        calendar.render();
+    });
+</script>
+{% endblock %}

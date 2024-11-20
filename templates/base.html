@@ -1,0 +1,31 @@
+{% load static %} 
+
+<!-- user/templates/base.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Agenda Certa{% endblock %}</title>
+    
+    <!-- Link para arquivos estáticos -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_styles %}{% endblock %}
+</head>
+<body>
+    <header>
+        <h1>Agenda Certa</h1>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Agenda Certa</p>
+    </footer>
+
+    {% block scripts %}
+    <script src="{% static 'js/script.js' %}"></script>
+    {% endblock %}
+</body>
+</html>
+

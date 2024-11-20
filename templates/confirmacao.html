@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="confirmacao-container">
+    <h2>Confirmação do Agendamento</h2>
+    <p><strong>Data Selecionada:</strong> {{ data_selecionada }}</p>
+    <p><strong>Nome:</strong> {{ nome }}</p>
+    <p><strong>Email:</strong> {{ email }}</p>
+    <p><strong>WhatsApp:</strong> {{ whatsapp }}</p>
+    
+    <h3>Serviços Selecionados:</h3>
+    <ul>
+        {% for servico in servicos %}
+        <li>{{ servico }}</li>
+        {% empty %}
+        <li>Nenhum serviço selecionado</li>
+        {% endfor %}
+    </ul>
+
+    <button onclick="window.location.href='{% url 'calendario' %}'" class="confirmacao-button">Voltar</button>
+    <button type="button" class="confirmacao-button" onclick="alert('Agendamento confirmado!')">Confirmar</button>
+</div>
+{% endblock %}
